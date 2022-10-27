@@ -11,6 +11,8 @@ urlpatterns = [
     path('products/', include('products.urls')),
     path('blogs/', include('blogs.urls')),
 
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+
 ]
 
 
