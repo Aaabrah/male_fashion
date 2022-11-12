@@ -11,9 +11,8 @@
     <title>Male-Fashion | Template</title>
 
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
-          rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css"/>
     <!-- Css Styles -->
     <link rel="stylesheet" href="{% static 'main/css/bootstrap.min.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'main/css/font-awesome.min.css' %}" type="text/css">
@@ -41,8 +40,8 @@
 <div class="search-model">
     <div class="h-100 d-flex align-items-center justify-content-center">
         <div class="search-close-switch">+</div>
-        <form class="search-model-form">
-            <input type="text" id="search-input" placeholder="Search here.....">
+        <form class="search-model-form" action="{% url 'products:all' %}">
+            <input type="text" id="search-input" name="q" placeholder="Search here....." value="{{ request.GET.q }}">
         </form>
     </div>
 </div>
@@ -59,6 +58,11 @@
 <script src="{% static 'main/js/mixitup.min.js' %}"></script>
 <script src="{% static 'main/js/owl.carousel.min.js' %}"></script>
 <script src="{% static 'main/js/main.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
+
+
+{% block extra_js %}
+{% endblock %}
 </body>
 
 </html>
