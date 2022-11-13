@@ -42,11 +42,15 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="shop__product__option__right">
-{#                                    <p>Sort by Price:</p>#}
+                                    {#                                    <p>Sort by Price:</p>#}
                                     <select onchange="addSearchParams('sort', this.value)">
                                         <option value="">Sort by Price:</option>
-                                        <option {% if request.GET.sort == 'real_price' %}selected{% endif %} value="real_price">Low to High</option>
-                                        <option {% if request.GET.sort == '-real_price' %}selected{% endif %} value="-real_price">High to Low</option>
+                                        <option {% if request.GET.sort == 'real_price' %}selected{% endif %}
+                                                value="real_price">Low to High
+                                        </option>
+                                        <option {% if request.GET.sort == '-real_price' %}selected{% endif %}
+                                                value="-real_price">High to Low
+                                        </option>
                                     </select>
                                 </div>
                             </div>
@@ -69,8 +73,19 @@
 
 
                                         <ul class="product__hover">
-                                            <li><a href="#"><img src="{% static 'main/img/icon/heart.png' %}"
-                                                                 alt=""></a></li>
+                                            {% if request.user.is_authenticated %}
+
+                                                <li>
+                                                    <a href=""><img src="{% static 'main/img/icon/heart.png' %}" alt=""></a>
+                                                </li>
+
+                                            {% else %}
+
+                                                <li>
+                                                    <a href="{% url 'users:login' %}"><img src="{% static 'main/img/icon/heart.png' %}" alt=""></a>
+                                                </li>
+
+                                            {% endif %}
                                             <li><a href="#"><img src="{% static 'main/img/icon/search.png' %}"
                                                                  alt=""></a></li>
                                         </ul>
